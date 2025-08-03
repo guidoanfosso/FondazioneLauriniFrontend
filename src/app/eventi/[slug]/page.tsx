@@ -4,10 +4,13 @@ import { renderStrapiBlocks } from '@/lib/renderStrapiBlocks';
 import { RenderDynamicZone } from '@/lib/RenderDynamicZone';
 import TuttiEventiSlider from '@/components/TuttiEventiSlider';
 
-export default async function EventoPage({ params }: { params: { slug: string } }) {
-
+export default async function EventoPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
-  const evento: EventoItem | null = await getEventoBySlug(slug);
+  const evento = await getEventoBySlug(slug);
   // Qui fai la chiamata per prendere TUTTI gli eventi
   const res = await getAllEventi();
   const tuttiGliEventi: EventoItem[] = (res?.data || []).sort((a, b) =>
