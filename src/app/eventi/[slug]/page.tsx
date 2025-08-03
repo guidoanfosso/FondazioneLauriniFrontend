@@ -1,18 +1,16 @@
+import { EventoItem } from '@/types/evento';
 import { getEventoBySlug, getAllEventi } from '@/lib/strapi';
 import { renderStrapiBlocks } from '@/lib/renderStrapiBlocks';
 import { RenderDynamicZone } from '@/lib/RenderDynamicZone';
 import TuttiEventiSlider from '@/components/TuttiEventiSlider';
 
-type Props = {
-  params: { slug: string };
-};
+export default async function EventoPage({ params }: { params: { slug: string } }) {
 
-export default async function EventoPage({ params }: Props) {
   const { slug } = params;
-  const evento = await getEventoBySlug(slug);
+  const evento: EventoItem | null = await getEventoBySlug(slug);
   // Qui fai la chiamata per prendere TUTTI gli eventi
   const res = await getAllEventi();
-  const tuttiGliEventi = (res?.data || []).sort((a, b) =>
+  const tuttiGliEventi: EventoItem[] = (res?.data || []).sort((a, b) =>
   new Date(b.attributes.DataEvento).getTime() - new Date(a.attributes.DataEvento).getTime()
 );
 

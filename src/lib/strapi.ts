@@ -1,6 +1,7 @@
 const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+import { EventoItem } from "@/types/evento";
 
-export async function getEventoBySlug(slug: string) {
+export async function getEventoBySlug(slug: string): Promise<EventoItem | null> {
   const res = await fetch(
     `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate[ContenutoEvento][populate]=*`,
     {
@@ -29,7 +30,7 @@ export async function getEventoBySlug(slug: string) {
   return evento;
 }
 
-export async function getAllEventi() {
+export async function getAllEventi(): Promise<{ data: EventoItem[] }> {
   const res = await fetch(
     `${baseUrl}/api/events?populate[MainImage][populate]=*`,
     {

@@ -1,12 +1,12 @@
 import React from 'react';
+import { EventoItem } from '@/types/evento';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { getAllEventi } from '@/lib/strapi';
 import EventiPassatiSlider from '@/components/EventiPassatiSlider';
 
 export default async function EventiPage() {
   const res = await getAllEventi();
-  const eventi = res?.data || [];
+  const eventi: EventoItem[] = res?.data || [];
 
   const today = new Date();
 
