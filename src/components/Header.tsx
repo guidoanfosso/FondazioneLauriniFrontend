@@ -37,7 +37,7 @@ export default function Header() {
             </div>
             <div className={`collapse navbar-collapse ${isOpen ? 'in' : ''}`} id="mainMenu">
               <ul className="nav navbar-nav pull-right">
-                <li className="primary"><a className="firstLevel active" href="/index.html">Home</a></li>
+                <li className="primary"><Link className="firstLevel active" href="/index.html">Home</Link></li>
                 <li className="sep"></li>
                 <li className="primary">
                   <a
@@ -53,20 +53,20 @@ export default function Header() {
                     Fondazione
                   </a>
                   <ul className={`subMenu ${isSubMenuOpen ? 'open' : ''}`}>
-                    <li><a href="/fondazione-laurini-chi-siamo.html">Chi siamo</a></li>
-                    <li className="last"><a href="/consiglio-amministrazione.html">CDA</a></li>
+                    <li><Link href="/fondazione-laurini-chi-siamo.html">Chi siamo</Link></li>
+                    <li className="last"><Link href="/consiglio-amministrazione.html">CDA</Link></li>
                   </ul>
                 </li>
                 <li className="sep"></li>
                 <li className="primary"><Link className="firstLevel" href="/eventi">Eventi</Link></li>
                 <li className="sep"></li>
-                <li className="primary"><a className="firstLevel" href="/storia-palazzo-laurini.html">Palazzo Laurini</a></li>
+                <li className="primary"><Link className="firstLevel" href="/storia-palazzo-laurini.html">Palazzo Laurini</Link></li>
                 <li className="sep"></li>
-                <li className="primary"><a className="firstLevel" href="/archivio-storico.html">Archivio</a></li>
+                <li className="primary"><Link className="firstLevel" href="/archivio-storico.html">Archivio</Link></li>
                 <li className="sep"></li>
-                <li className="primary"><a className="firstLevel" href="/istituto-del-simbolo-lorenzo-ostuni.html">Istituto del Simbolo</a></li>
+                <li className="primary"><Link className="firstLevel" href="/istituto-del-simbolo-lorenzo-ostuni.html">Istituto del Simbolo</Link></li>
                 <li className="sep"></li>
-                <li className="last" id="lastMenu"><a className="firstLevel" href="/contatti-fondazione-laurini.html">Contatti</a></li>
+                <li className="last" id="lastMenu"><Link className="firstLevel" href="/contatti-fondazione-laurini.html">Contatti</Link></li>
               </ul>
             </div>
           </nav>
