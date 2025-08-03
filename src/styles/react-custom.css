@@ -1,0 +1,151 @@
+/* Submenu sempre nascosto */
+.subMenu {
+  display: none;
+  position: absolute; /* come di solito */
+  background: #fff;  /* o come vuoi tu */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 9999;
+}
+
+/* Desktop: mostrare submenu on hover */
+@media (min-width: 992px) {
+  .primary:hover > .subMenu {
+    display: block;
+  }
+}
+
+/* Mobile: mostrare submenu se ha classe open */
+@media (max-width: 991px) {
+  .primary .subMenu.open {
+    display: block;
+    position: static; /* per non sovrapporsi in mobile */
+  }
+}
+
+/* Pagina indice eventi */
+
+.pagina-eventi {
+	margin-top: 20px;
+
+}
+
+.indice-titolo {
+	font-size: 16px;
+	color: #444
+}
+
+.indice-data {
+	font-size: 14px;
+	color: #444;
+}
+
+/* Assicurati che le immagini dentro lo slider non escano mai */
+.sezione-eventi-passati img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;  /* facoltativo: se vuoi ritagliare per avere tutte le immagini "uguali" */
+}
+
+/* SWIPER */
+
+.eventi-classic-slider .swiper-slide {
+  transition: all 0.3s ease;
+  transform-origin: left center;
+  position: relative;
+  z-index: 1;
+  width: 300px; /* o la larghezza desiderata */
+}
+
+.eventi-classic-slider .swiper-slide.active-slide {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.eventi-classic-slider img.img-active {
+  border-radius: 0px;
+  /* magari un box-shadow per risaltare */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.eventi-classic-slider .boxContent h3.text-active {
+
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.eventi-classic-slider .boxContent h4.text-active {
+
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+
+
+/* PAGINA DETTAGLIO EVENTO */
+/* Extra spazio tra corpo e sidebar in dettaglio eventi */
+@media (min-width: 992px) {
+	.corpo-centrale-dettaglio-eventi {
+	  padding-right: 24px!important;
+	}
+}
+
+/* Sidebar styling senza div interno */
+.sidebar-box {
+  background-color: #f7f7f7;
+  color: #444;
+  border: 1px solid #ddd;
+  padding: 22px;
+  font-size: 15px; /* come già avevamo */
+}
+
+.sidebar-box hr {
+    height: 1px;
+    border: none;
+    color: #999;
+    background-color: #999;
+    width: 100%;
+}
+
+/* Corpo ceontrale blocchi vari*/
+
+.text-image-block__img {
+  width: 260px;
+  height: auto;
+  margin-right: 20px;
+  float: left;
+}
+
+.text-image-block {
+  overflow: hidden; /* per contenere il float */
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.text-block {
+  font-size: 15px;
+}
+
+.text-block-title {
+  font-weight: bold;
+  text-transform: none; /* toglie eventuale uppercase/capitalize ereditato */
+  margin-bottom: 0.5em; /* spaziatura sotto il titolo */
+}
+
+/* CAROUSEL Bordino solo sulla slide attiva */
+.evento-attivo {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Assicurati che le immagini dentro lo slider non escano mai */
+.sezione-tutti-eventi img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;  /* facoltativo: se vuoi ritagliare per avere tutte le immagini "uguali" */
+}
