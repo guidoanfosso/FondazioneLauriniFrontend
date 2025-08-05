@@ -67,7 +67,7 @@ export function renderStrapiBlocks(blocks: any[]) {
         );
 
       case 'heading':
-        const HeadingTag = `h${block.level || 2}` as keyof JSX.IntrinsicElements;
+        const HeadingTag = `h${block.level || 2}` as keyof React.JSX.IntrinsicElements;
         return (
           <HeadingTag key={`heading-${index}`}>
             {block.children.map((child: any, ci: number) => renderText(child, ci))}

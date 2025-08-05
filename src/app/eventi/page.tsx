@@ -1,8 +1,31 @@
 import React from 'react';
-import { EventoItem } from '@/types/evento';
 import Link from 'next/link';
 import { getAllEventi } from '@/lib/strapi';
 import EventiPassatiSlider from '@/components/EventiPassatiSlider';
+
+type EventoAttributes = {
+  Titolo: string;
+  slug: string;
+  DataEvento: string | null;
+  DataFine?: string | null;
+  Location?: string | null;
+  MainImage?: {
+    data?: {
+      attributes?: {
+        fullUrl: string;
+      };
+    };
+  };
+  ContenutoEvento?: any[]; // se vuoi possiamo tipizzare anche questo
+  SidebarQuickInfo?: any[];
+  SidebarInformazioni?: any[];
+  SidebarRassegnaStampa?: any[];
+};
+
+type EventoItem = {
+  id: number;
+  attributes: EventoAttributes;
+};
 
 export default async function EventiPage() {
   const res = await getAllEventi();
@@ -12,12 +35,12 @@ export default async function EventiPage() {
 
   // Divido in futuri e passati
   const futuri = eventi
-    .filter(e => new Date(e.attributes.DataEvento) >= today)
-    .sort((a, b) => new Date(a.attributes.DataEvento).getTime() - new Date(b.attributes.DataEvento).getTime());
+    .filter(e => new Date(e.attributes.DataEvento ?? '') >= today)
+    .sort((a, b) => new Date(a.attributes.DataEvento ?? '').getTime() - new Date(b.attributes.DataEvento ?? '').getTime());
 
   const passati = eventi
-    .filter(e => new Date(e.attributes.DataEvento) < today)
-    .sort((a, b) => new Date(b.attributes.DataEvento).getTime() - new Date(a.attributes.DataEvento).getTime());
+    .filter(e => new Date(e.attributes.DataEvento ?? '') < today)
+    .sort((a, b) => new Date(b.attributes.DataEvento ?? '').getTime() - new Date(a.attributes.DataEvento ?? '').getTime());
 
   // Formatta data tipo "Domenica 20 settembre 2025"
   const formatDate = (dateStr: string | null | undefined) => {

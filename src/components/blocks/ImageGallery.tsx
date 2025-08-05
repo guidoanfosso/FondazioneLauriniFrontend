@@ -1,7 +1,23 @@
 // components/blocks/ImageGallery.tsx
 import React from "react";
+type StrapiImage = {
+  id: string | number;
+  attributes: {
+    url: string;
+    alternativeText?: string;
+    formats?: {
+      medium?: {
+        url: string;
+      };
+    };
+  };
+};
 
-export default function ImageGallery({ images }) {
+type ImageGalleryProps = {
+  images: StrapiImage[];
+};
+
+export default function ImageGallery({ images }: ImageGalleryProps) {
   return (
     <div className="image-gallery">
       {images?.map((image) => {

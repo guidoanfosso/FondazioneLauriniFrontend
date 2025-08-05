@@ -1,5 +1,28 @@
 const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-import { EventoItem } from "@/types/evento";
+
+type EventoAttributes = {
+  Titolo: string;
+  slug: string;
+  DataEvento: string | null;
+  DataFine?: string | null;
+  Location?: string | null;
+  MainImage?: {
+    data?: {
+      attributes?: {
+        fullUrl: string;
+      };
+    };
+  };
+  ContenutoEvento?: any[]; // se vuoi possiamo tipizzare anche questo
+  SidebarQuickInfo?: any[];
+  SidebarInformazioni?: any[];
+  SidebarRassegnaStampa?: any[];
+};
+
+type EventoItem = {
+  id: number;
+  attributes: EventoAttributes;
+};
 
 export async function getEventoBySlug(slug: string): Promise<EventoItem | null> {
   const res = await fetch(
