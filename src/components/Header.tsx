@@ -37,7 +37,7 @@ export default function Header() {
             </div>
             <div className={`collapse navbar-collapse ${isOpen ? 'in' : ''}`} id="mainMenu">
               <ul className="nav navbar-nav pull-right">
-                <li className="primary"><Link className="firstLevel active" href="/index.html">Home</Link></li>
+                <li className="primary"><Link className="firstLevel active" href="/">Home</Link></li>
                 <li className="sep"></li>
                 <li className="primary">
                   <a

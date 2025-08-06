@@ -1,3 +1,4 @@
+/* GENERALI */
 /* Submenu sempre nascosto */
 .subMenu {
   display: none;
@@ -23,6 +24,24 @@
     position: static; /* per non sovrapporsi in mobile */
   }
 }
+
+.img-singleslider {
+	width: 100%;
+
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    border: 1px solid white;
+}
+
+
+/* HOME PAGE */
+
+
+.singleslider-home .swiper {
+  --swiper-theme-color: #999; /* cambia qui il colore */
+}
+
 
 /* Pagina indice eventi */
 
