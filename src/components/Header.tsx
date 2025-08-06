@@ -16,8 +16,37 @@ export default function Header() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Blocca lo scroll quando il menu mobile è aperto
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, isMobile]);
+
+  // Chiude il menu con ESC
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        setIsSubMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const isActive = (href: string) => {
     return pathname === href ? 'active' : '';
+  };
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsOpen(false);
+      setIsSubMenuOpen(false);
+    }
   };
 
   return (
@@ -43,7 +72,7 @@ export default function Header() {
             <div className={`collapse navbar-collapse ${isOpen ? 'in' : ''}`} id="mainMenu">
               <ul className="nav navbar-nav pull-right">
                 <li className="primary">
-                  <Link className={`firstLevel ${isActive('/')}`} href="/">Home</Link>
+                  <Link className={`firstLevel ${isActive('/')}`} href="/" onClick={handleLinkClick}>Home</Link>
                 </li>
                 <li className="sep"></li>
                 <li className="primary">
@@ -60,29 +89,29 @@ export default function Header() {
                     Fondazione
                   </a>
                   <ul className={`subMenu ${isSubMenuOpen ? 'open' : ''}`}>
-                    <li><Link href="/fondazione-laurini-chi-siamo.html">Chi siamo</Link></li>
-                    <li className="last"><Link href="/consiglio-amministrazione.html">CDA</Link></li>
+                    <li><Link href="/fondazione-laurini-chi-siamo.html" onClick={handleLinkClick}>Chi siamo</Link></li>
+                    <li className="last"><Link href="/consiglio-amministrazione.html" onClick={handleLinkClick}>CDA</Link></li>
                   </ul>
                 </li>
                 <li className="sep"></li>
                 <li className="primary">
-                  <Link className={`firstLevel ${pathname.startsWith('/eventi') ? 'active' : ''}`} href="/eventi">Eventi</Link>
+                  <Link className={`firstLevel ${pathname.startsWith('/eventi') ? 'active' : ''}`} href="/eventi" onClick={handleLinkClick}>Eventi</Link>
                 </li>
                 <li className="sep"></li>
                 <li className="primary">
-                  <Link className={`firstLevel ${isActive('/storia-palazzo-laurini.html')}`} href="/storia-palazzo-laurini.html">Palazzo Laurini</Link>
+                  <Link className={`firstLevel ${isActive('/storia-palazzo-laurini.html')}`} href="/storia-palazzo-laurini.html" onClick={handleLinkClick}>Palazzo Laurini</Link>
                 </li>
                 <li className="sep"></li>
                 <li className="primary">
-                  <Link className={`firstLevel ${isActive('/archivio-storico.html')}`} href="/archivio-storico.html">Archivio</Link>
+                  <Link className={`firstLevel ${isActive('/archivio-storico.html')}`} href="/archivio-storico.html" onClick={handleLinkClick}>Archivio</Link>
                 </li>
                 <li className="sep"></li>
                 <li className="primary">
-                  <Link className={`firstLevel ${isActive('/istituto-del-simbolo-lorenzo-ostuni.html')}`} href="/istituto-del-simbolo-lorenzo-ostuni.html">Istituto del Simbolo</Link>
+                  <Link className={`firstLevel ${isActive('/istituto-del-simbolo-lorenzo-ostuni.html')}`} href="/istituto-del-simbolo-lorenzo-ostuni.html" onClick={handleLinkClick}>Istituto del Simbolo</Link>
                 </li>
                 <li className="sep"></li>
                 <li className="last" id="lastMenu">
-                  <Link className={`firstLevel ${isActive('/contatti-fondazione-laurini.html')}`} href="/contatti-fondazione-laurini.html">Contatti</Link>
+                  <Link className={`firstLevel ${isActive('/contatti-fondazione-laurini.html')}`} href="/contatti-fondazione-laurini.html" onClick={handleLinkClick}>Contatti</Link>
                 </li>
               </ul>
             </div>
