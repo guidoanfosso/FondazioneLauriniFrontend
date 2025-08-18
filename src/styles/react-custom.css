@@ -25,6 +25,11 @@
   }
 }
 
+/* submenu indentato solo mobile */
+.primary .subMenu.open {
+    margin-left: 15px;
+}
+
 .img-singleslider {
 	width: 100%;
 
@@ -32,6 +37,10 @@
 
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
     border: 1px solid white;
+}
+
+.text-block, .media-with-caption, .image-gallery, .video-embed-with-caption, .link-item, .text-image-block {
+  margin-bottom: 30px;
 }
 
 
@@ -140,7 +149,6 @@
 
 .text-image-block {
   overflow: hidden; /* per contenere il float */
-  margin-bottom: 20px;
   font-size: 15px;
 }
 

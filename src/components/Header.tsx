@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -8,6 +8,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 992);
@@ -25,6 +27,29 @@ export default function Header() {
       document.body.style.overflow = '';
     };
   }, [isOpen, isMobile]);
+
+  // Chiude il menu al tap esterno su mobile
+
+useEffect(() => {
+  if (!isOpen) return;
+
+  function handleClickOutside(event: MouseEvent) {
+      if (
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(event.target as Node)
+          ) {
+      setIsOpen(false);
+      setIsSubMenuOpen(false);
+    }
+  }
+  
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => document.removeEventListener('mousedown', handleClickOutside);
+}, [isOpen]);
+
 
   // Chiude il menu con ESC
   useEffect(() => {
@@ -57,6 +82,7 @@ export default function Header() {
             <div className="navbar-header">
               <button
                 type="button"
+		ref={hamburgerRef}
                 className="navbar-toggle"
                 onClick={() => setIsOpen(!isOpen)}
               >
@@ -69,7 +95,9 @@ export default function Header() {
                 <img src="/images/logo.png" alt="Fondazione Laurini" />
               </Link>
             </div>
-            <div className={`collapse navbar-collapse ${isOpen ? 'in' : ''}`} id="mainMenu">
+            <div ref={menuRef}
+		 className={`collapse navbar-collapse ${isOpen ? 'in' : ''}`}
+		 id="mainMenu">
               <ul className="nav navbar-nav pull-right">
                 <li className="primary">
                   <Link className={`firstLevel ${isActive('/')}`} href="/" onClick={handleLinkClick}>Home</Link>

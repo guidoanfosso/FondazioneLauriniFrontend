@@ -16,12 +16,13 @@ export default function EventiPassatiSlider({ eventi }: Props) {
   const formatDate = (dateStr: string | null | undefined) => {
     if (!dateStr) return '';
     const date = new Date(dateStr);
-    return date.toLocaleDateString('it-IT', {
+    const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+    return capitalize(date.toLocaleDateString('it-IT', {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
       year: 'numeric',
-    });
+    }));
   };
 
   return (

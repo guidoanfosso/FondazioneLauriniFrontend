@@ -27,7 +27,7 @@ export function RenderDynamicZone({ blocks }: Props) {
 
 case 'media.video-with-caption':
   return (
-    <section key={key} className="video-with-caption">
+    <section key={key} className="media-with-caption">
       {block.image?.data?.attributes?.url && (
         <>
           <img

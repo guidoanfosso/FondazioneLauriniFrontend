@@ -13,16 +13,16 @@ type Props = {
 
 export default function TuttiEventiSlider({ eventi, currentSlug }: Props) {
   const activeIndex = eventi.findIndex(e => e.attributes.slug === currentSlug);
-
+  const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
   const formatDate = (dateStr: string | null | undefined) => {
     if (!dateStr) return '';
     const date = new Date(dateStr);
-    return date.toLocaleDateString('it-IT', {
+    return capitalize(date.toLocaleDateString('it-IT', {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
       year: 'numeric',
-    });
+    }));
   };
 
   return (
