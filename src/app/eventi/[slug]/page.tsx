@@ -83,7 +83,7 @@ export default async function EventoPage({ params }: {params: Promise<{ slug: st
           </div>
         </header>
 
-        <section id="content" className="pt30 pb30">
+        <section id="content" className="pt30 pb30 pagina-evento">
           <div className="container">
             <div className="row">
               <section className="col-md-9 corpo-centrale-dettaglio-eventi">

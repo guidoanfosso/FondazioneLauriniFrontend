@@ -35,6 +35,11 @@
 
 }
 
+.img-fluid {
+	max-width: 100%;
+
+}
+
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
     border: 1px solid white;
 }
@@ -114,6 +119,18 @@
 
 
 /* PAGINA DETTAGLIO EVENTO */
+
+
+/* Sidebar prima */
+@media (max-width: 991px) {
+  .pagina-evento .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .pagina-evento .corpo-centrale-dettaglio-eventi { order: 2; }
+  .pagina-evento .sidebar-box { order: 1; }
+}
+
 /* Extra spazio tra corpo e sidebar in dettaglio eventi */
 @media (min-width: 992px) {
 	.corpo-centrale-dettaglio-eventi {
