@@ -9,6 +9,20 @@ export default function Home() {
   {
     id: 1,
     attributes: {
+      Titolo: 'Le muse di Sinisgalli',
+      UrlLink: '/eventi/le-muse-di-sinisgalli-nellorto-di-merola',
+      Image: {
+        data: {
+          attributes: {
+            fullUrl: '/home/banner-home-4.jpg',
+          },
+        },
+      },
+    },
+  },
+  {
+    id: 2,
+    attributes: {
       Titolo: 'Chi siamo',
       UrlLink: 'fondazione-laurini-chi-siamo.html',
       Image: {
@@ -21,7 +35,7 @@ export default function Home() {
     },
   },
   {
-    id: 2,
+    id: 3,
     attributes: {
       Titolo: 'Istituto del simbolo Lorenzo Ostuni',
       UrlLink: 'istituto-del-simbolo-lorenzo-ostuni.html',
@@ -35,7 +49,7 @@ export default function Home() {
     },
   },
   {
-    id: 3,
+    id: 4,
     attributes: {
       Titolo: 'Mostra Magia della Luce',
       UrlLink: 'news/mostra-magia-della-luce-lorenzo-ostuni.html',
